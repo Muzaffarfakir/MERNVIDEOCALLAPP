@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 export default function Friend() {
-    let socket = io("http://localhost:8080/", { transport: ["polling"] });
+    let socket = io("https://mernvideocallapp.onrender.com/", { transport: ["polling"] });
     let [freinds, setfreiends] = useState([]);
     let [chanename, setchanename] = useState(false);
     let [hide, sethide] = useState(false);
@@ -22,7 +22,7 @@ export default function Friend() {
                 e.target.style.color = "white";
                 e.target.style.background = "red"
                 socket.emit("req", `${JSON.parse(window.localStorage.getItem("Data")).username} Follow  You! `);
-                axios.post("http://localhost:8080/addFreiend", { name: el.username, email: JSON.parse(window.localStorage.getItem("Data")).email }).then((res) => {
+                axios.post("https://mernvideocallapp.onrender.com/addFreiend", { name: el.username, email: JSON.parse(window.localStorage.getItem("Data")).email }).then((res) => {
                     console.log(res.data)
                     if (res.data) {
                         sethidefriend(true);
@@ -39,7 +39,7 @@ export default function Friend() {
                 e.target.style.color = "white";
                 e.target.style.background = "green";
                 socket.emit("unreq", `${JSON.parse(window.localStorage.getItem("Data")).username} UnFollow You !`);
-                axios.post("http://localhost:8080/RemoveFreiend", { name: el.username, email: JSON.parse(window.localStorage.getItem("Data")).email });
+                axios.post("https://mernvideocallapp.onrender.com/RemoveFreiend", { name: el.username, email: JSON.parse(window.localStorage.getItem("Data")).email });
                 break;
         }
 
@@ -48,11 +48,11 @@ export default function Friend() {
         setchanename(true);
 
 
-        axios.post("http://localhost:8080/RemoveFreiend", { name: JSON.parse(window.localStorage.getItem("Data")).username, email: JSON.parse(window.localStorage.getItem("Data")).email })
+        axios.post("https://mernvideocallapp.onrender.com/RemoveFreiend", { name: JSON.parse(window.localStorage.getItem("Data")).username, email: JSON.parse(window.localStorage.getItem("Data")).email })
         socket.emit("unreq", `${JSON.parse(window.localStorage.getItem("Data")).username} UnFollow You !`)
     }
     useEffect(() => {
-        fetch("http://localhost:8080/dost").then((res) => res.json()).then((data) => {
+        fetch("https://mernvideocallapp.onrender.com/dost").then((res) => res.json()).then((data) => {
 
             setfreiends(data.filter((name) => name._id !== JSON.parse(window.localStorage.getItem("Data"))._id));
         })
