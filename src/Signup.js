@@ -26,7 +26,7 @@ export default function Signup() {
         if (!name || !email || !pass || !otp || !des) {
             setrequired(true);
         } else {
-            axios.post("http://localhost:8080/sign", { name, email, pass, otp, des }).then((res) => {
+            axios.post("https://mernvideocallapp.onrender.com/sign", { name, email, pass, otp, des }).then((res) => {
                 if (res.data === "exist") {
                     setLoad(true);
                     alert("Email is Already in use !");
@@ -57,7 +57,7 @@ export default function Signup() {
         setLoad(false);
     }
     function v() {
-        axios.post("http://localhost:8080/verify", { email, otp }).then((res) => {
+        axios.post("https://mernvideocallapp.onrender.com/verify", { email, otp }).then((res) => {
             if (res.data == "invalid") {
                 alert("Wrong Otp!");
             }
@@ -84,7 +84,7 @@ export default function Signup() {
         if (!email) {
             alert("Enter Email !")
         } else {
-            axios.post("http://localhost:8080/otp", { email }).then((res) => {
+            axios.post("https://mernvideocallapp.onrender.com/otp", { email }).then((res) => {
                 if (res.data == "sendOtp") {
                     setopttime(true);
                     SetNameChane(true);
