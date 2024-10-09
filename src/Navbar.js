@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, BrowserRouter, Route, Routes } from "react-router-dom"
+import { Link, BrowserRouter,HashRouter , Route, Routes } from "react-router-dom"
 import Signup from "./Signup";
 import Login from "./Login";
 import Profile from "./Profile";
@@ -11,7 +11,7 @@ export default function Navbar() {
     let [cokkies, setcokkies, removecokies] = useCookies(["access_token"]);
     return (
         <>
-            <BrowserRouter>
+            <HashRouter >
                 <div className="d-flex  my-3 ">
 
 
@@ -50,7 +50,7 @@ export default function Navbar() {
 
                 </Routes>
 
-            </BrowserRouter >
+            </HashRouter  >
 
         </>
     )
