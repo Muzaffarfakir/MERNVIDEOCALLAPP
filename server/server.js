@@ -90,7 +90,13 @@ app.post("/otp", (req, res) => {
         from: "fakirmuzaffar771@gmail.com",
         to: req.body.email,
         subject: "OTP Verification Code",
-        text: `Your OTP for verification is: ${o}. This OTP is valid for 10 minutes.`,
+        text: `Otp Verification 
+        For your security, we've sent a One-Time Password (OTP) to your registered mobile number/email. Please enter the 6-digit OTP below to verify your identity and proceed.
+${o}
+Didn't receive the OTP? You can request it again in 30 seconds.
+Note: The OTP is valid for 60 seconds
+        
+        .`,
     };
 
     transport.sendMail(mailOptions, (err, data) => {
