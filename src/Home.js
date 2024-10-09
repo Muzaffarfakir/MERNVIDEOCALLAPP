@@ -6,7 +6,7 @@ import Peer from "peerjs";
 import { io } from "socket.io-client";
 
 export default function Home() {
-    let socket = io("http://localhost:8080/", { transport: ["polling"] });
+    let socket = io("https://mernvideocallapp.onrender.com/", { transport: ["polling"] });
 
     let [freinds, setfreinds] = useState([]);
     let remotererf = useRef(null);
@@ -107,7 +107,7 @@ export default function Home() {
         });
 
         // Fetch friends list
-        fetch("http://localhost:8080/dost")
+        fetch("https://mernvideocallapp.onrender.com/dost")
             .then((res) => res.json())
             .then((data) => {
                 const myId = JSON.parse(window.localStorage.getItem("Data"))._id;
