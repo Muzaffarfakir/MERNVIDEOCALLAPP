@@ -72,7 +72,10 @@ let collectionDb = mongoose.model("mongoseSchemaDb", mongooseSchema);
 ////////middlewares declaration 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://mernvideocallapp-1.onrender.com", // Specify your frontend URL
+    methods: ["GET", "POST"]
+}));
 
 /////////routes declaration 
 /// OTP route
