@@ -13,7 +13,7 @@ export default function Login() {
         if (!email || !pass) {
             setrequired(true);
         } else {
-            axios.post("http://localhost:8080/login", { email, pass }).then((res) => {
+            axios.post("https://mernvideocallapp.onrender.com/login", { email, pass }).then((res) => {
                 if (res.data.mess == "valid") {
                     setload(false);
                     nav("/profile")
