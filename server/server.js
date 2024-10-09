@@ -104,6 +104,18 @@ app.post("/otp", (req, res) => {
 });
 
 /// Signup route
+app.post("/verify", (req, res) => {
+    if (otpStrore.hasOwnProperty(req.body.email)) {
+        let storedOtp = otpStrore[req.body.email].otp;
+        let storedtime = otpStrore[req.body.email].time;
+        if (storedOtp == req.body.otp) {
+            res.send("verify");
+        }
+        else {
+            res.send("invalid");
+        }
+    }
+})
 app.post("/sign", async (req, res) => {
     let signDataAuth = await collectionDb.findOne({ email: req.body.email });
     if (!signDataAuth) {
