@@ -76,12 +76,12 @@ app.use(cors());
 
 /////////routes declaration 
 /// OTP route
-let otpStore = {};
+let otpStrore = {};
 app.post("/otp", (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    otpStore[req.body.email] = {
+    otpStrore[req.body.email] = {
         otp: o,
         time: Date.now() + 600000, // 10 minutes validity
     };
