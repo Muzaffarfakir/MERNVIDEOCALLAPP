@@ -74,7 +74,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
     origin: "https://mernvideocallapp-1.onrender.com", // Specify your frontend URL
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+     credentials: true,
 }));
 
 /////////routes declaration 
