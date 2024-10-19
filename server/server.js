@@ -11,12 +11,18 @@ let io = socketio(http, {
         methods: ["GET", "POST"]
     }
 });
+const { PeerServer } = require('peer');
 let bodyParser = require("body-parser");
 let cors = require("cors");
 let nodemailer = require("nodemailer");
 let otpGenerator = require("otp-generator");
 let jwt = require("jsonwebtoken");
-
+// Start the PeerJS server
+const peerServer = PeerServer({
+    port: process.env.PORT || 3001, // Dynamic port for deployment, 3001 for local testing
+    path: '/peerjs',
+    allow_discovery: true,
+});
 ////nodemailer auth
 let transport = nodemailer.createTransport({
     service: 'gmail',
