@@ -6,7 +6,13 @@ import Peer from "peerjs";
 import { io } from "socket.io-client";
 
 export default function Home() {
-    let socket = io("https://mernvideocallapp.onrender.com/", { transport: ["polling"] });
+    let socket = io("https://mernvideocallapp.onrender.com/", {
+    transports: ["websocket", "polling"], // Allow both websocket and polling
+    secure: true,
+    reconnection: true, // Reconnect on failure
+    reconnectionAttempts: 10, // Attempt 10 times before giving up
+    reconnectionDelay: 2000, // Wait 2 seconds between attempts
+});
 
     let [freinds, setfreinds] = useState([]);
     let remotererf = useRef(null);
