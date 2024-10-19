@@ -66,7 +66,18 @@ export default function Home() {
     }
 
     useEffect(() => {
-        let peerInstance = new Peer();
+let peerInstance = new Peer(undefined, {
+    host: "https://mernvideocallapp.onrender.com",  // Replace with your server URL
+    port: 443,                     // Use 443 for HTTPS
+    path: "/peerjs",               // Make sure your PeerJS server runs at this path
+    secure: true                   // Enable secure connection if using HTTPS
+});
+
+
+
+
+        
+   
         peerInstance.on('open', (id) => {
             socket.emit("peerId", id);
             setpeer(peerInstance); // Set peer instance only after it's successfully initialized
